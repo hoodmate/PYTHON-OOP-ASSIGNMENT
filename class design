@@ -1,0 +1,37 @@
+# Base class
+class Smartphone:
+    def __init__(self, brand, model, storage):
+        self.brand = brand
+        self.model = model
+        self.storage = storage
+
+    def call(self, number):
+        print(f"{self.brand} {self.model} is calling {number} 📞")
+
+    def info(self):
+        return f"Smartphone: {self.brand} {self.model}, Storage: {self.storage}GB"
+
+# Derived class (Inheritance)
+class GamingPhone(Smartphone):
+    def __init__(self, brand, model, storage, gpu):
+        super().__init__(brand, model, storage)  # call parent constructor
+        self.gpu = gpu
+
+    def play_game(self, game):
+        print(f"{self.brand} {self.model} with {self.gpu} GPU is playing {game} 🎮")
+
+    # Overriding method (Polymorphism in action)
+    def info(self):
+        return f"Gaming Phone: {self.brand} {self.model}, Storage: {self.storage}GB, GPU: {self.gpu}"
+
+
+# --- Test ---
+phone1 = Smartphone("Samsung", "Galaxy S24", 256)
+gaming1 = GamingPhone("Asus", "ROG Phone 7", 512, "Adreno 740")
+
+print(phone1.info())
+phone1.call("0712345678")
+
+print(gaming1.info())
+gaming1.play_game("Call of Duty Mobile")
+
